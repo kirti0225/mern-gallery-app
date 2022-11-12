@@ -17,13 +17,5 @@ app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 
-if(process.env.NODE_ENV==='production'){
-    app.use(express.static('client/build'));
-    const path = require('path')
-    app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(_dirname,'client','build','index.html'));
-    })
-}
-
 const port = process.env.PORT || 5000;
 app.listen(port, console.log(`Listening on port ${port}...`));
